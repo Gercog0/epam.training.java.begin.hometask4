@@ -162,8 +162,63 @@ public class SearchArrayServiceTest {
         service.searchPrimeNumbers(null);
     }
 
-    // TODO: 25.06.2020  
-    // fibonacci and excellent numbers tests
+    @Test
+    public void searchFibonacciNumbersValid() {
+        try {
+            IntegerArray expected = new IntegerArray(3, 5, 8);
+            IntegerArray actual = service.searchFibonacciNumbers(
+                    new IntegerArray(54, 3, 292, 5, 8, 31, 12, 140, 800));
+            assertEquals(expected, actual);
+        } catch (UserException exp) {
+            fail("Exception...");
+        }
+    }
+
+    @Test
+    public void searchFibonacciNumbersInvalid() {
+        try {
+            IntegerArray expected = new IntegerArray(3, 5, 44, 800);
+            IntegerArray actual = service.searchFibonacciNumbers(
+                    new IntegerArray(540, 3, 292, 5, 0, 8, 44, 37, 800));
+            assertNotEquals(expected, actual);
+        } catch (UserException exp) {
+            fail("Exception...");
+        }
+    }
+
+    @Test(expectedExceptions = UserException.class)
+    public void searchFibonacciNumbersException() throws UserException {
+        service.searchFibonacciNumbers(null);
+    }
+
+    @Test
+    public void searchExcellentNumbersValid() {
+        try {
+            IntegerArray expected = new IntegerArray(345, 567, 890, 3);
+            IntegerArray actual = service.searchExcellentNumbers(
+                    new IntegerArray(544, 345, 292, 55, 567, 3133, 890, 1401, 800, 3));
+            assertEquals(expected, actual);
+        } catch (UserException exp) {
+            fail("Exception...");
+        }
+    }
+
+    @Test
+    public void searchExcellentNumbersInvalid() {
+        try {
+            IntegerArray expected = new IntegerArray(540, 3, 431, 801);
+            IntegerArray actual = service.searchExcellentNumbers(
+                    new IntegerArray(540, 3, 292, 5, 0, 8, 44, 37, 801));
+            assertNotEquals(expected, actual);
+        } catch (UserException exp) {
+            fail("Exception...");
+        }
+    }
+
+    @Test(expectedExceptions = UserException.class)
+    public void searchExcellentNumbersException() throws UserException {
+        service.searchExcellentNumbers(null);
+    }
 
     @AfterClass
     public void tierDown() {
