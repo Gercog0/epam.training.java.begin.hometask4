@@ -12,7 +12,7 @@ import java.util.Random;
 public class IntegerArrayCreator {
     private static final int BOUND_ARRAY = 10000;
 
-    public IntegerArray createArrayByConsole() {
+    public IntegerArray createArrayByConsole() throws UserException {
         OutputData.print("Input size of an array:");
         int arraySize = InputData.inputInt();
 
@@ -24,7 +24,7 @@ public class IntegerArrayCreator {
         return new IntegerArray(newArray);
     }
 
-    public IntegerArray createRandomArray(int arraySize) {
+    public IntegerArray createRandomArray(int arraySize) throws UserException {
         Random random = new Random();
         int[] newArray = new int[arraySize];
 
